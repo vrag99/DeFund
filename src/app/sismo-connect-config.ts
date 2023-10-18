@@ -9,7 +9,7 @@ import {
 
 export { ClaimType, AuthType };
 export const CONFIG: SismoConnectConfig = {
-  appId: "0x32403ced4b65f2079eda77c84e7d2be6",
+  appId: "0x32a8982df24771fa43f7df369edc9ca4",
   vault: {
     // For development purposes insert the Data Sources that you want to impersonate
     // Never use this in production
