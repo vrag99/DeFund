@@ -268,5 +268,5 @@ function getProofDataForClaim(
     }
   }
 
-  return null; 
+  return null; // returns null if no matching claimType, groupId and value are found
 }
