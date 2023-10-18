@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Header from "./components/Header";
 import {
   SismoConnectButton,
   SismoConnectResponse,
@@ -26,22 +25,14 @@ export default function Home() {
   return (
     <>
       <main className="main">
-        <Header />
         {pageState == "init" ? (
           <>
             <SismoConnectButton
               config={CONFIG}
-              // Auths = Data Source Ownership Requests. (e.g Wallets, Github, Twitter, Github)
               auths={AUTHS}
-              // Claims = prove group membership of a Data Source in a specific Data Group.
-              // (e.g ENS DAO Voter, Minter of specific NFT, etc.)
-              // Data Groups = [{[dataSource1]: value1}, {[dataSource1]: value1}, .. {[dataSource]: value}]
-              // Existing Data Groups and how to create one: https://factory.sismo.io/groups-explorer
               claims={CLAIMS}
-              // Signature = user can sign a message embedded in their zk proof
               signature={SIGNATURE_REQUEST}
               text="Prove With Sismo"
-              // Triggered when received Sismo Connect response from user data vault
               onResponse={async (response: SismoConnectResponse) => {
                 setSismoConnectResponse(response);
                 setPageState("verifying");
@@ -86,10 +77,6 @@ export default function Home() {
             </div>
           </>
         )}
-
-        {/* Table of the Sismo Connect requests and verified result */}
-
-        {/* Table for Verified Auths */}
         {sismoConnectVerifiedResult && (
           <>
             <h3>Verified Auths</h3>
@@ -113,8 +100,6 @@ export default function Home() {
         )}
 
         <br />
-
-        {/* Table for Verified Claims */}
         {sismoConnectVerifiedResult && (
           <>
             <h3>Verified Claims</h3>
@@ -145,8 +130,6 @@ export default function Home() {
             </table>
           </>
         )}
-
-        {/* Table of the Auths requests*/}
         <h3>Auths requested</h3>
         <table>
           <thead>
@@ -173,8 +156,6 @@ export default function Home() {
           </tbody>
         </table>
         <br />
-
-        {/* Table of the Claims requests*/}
         <h3>Claims requested</h3>
         <table>
           <thead>
@@ -221,7 +202,6 @@ export default function Home() {
           </tbody>
         </table>
 
-        {/* Table of the Signature request and its result */}
         <h3>Signature requested and verified</h3>
         <table>
           <thead>
@@ -250,7 +230,7 @@ export default function Home() {
 
 function readibleHex(userId: string, startLength = 6, endLength = 4, separator = "...") {
   if (!userId.startsWith("0x")) {
-    return userId; // Return the original string if it doesn't start with "0x"
+    return userId; 
   }
   return userId.substring(0, startLength) + separator + userId.substring(userId.length - endLength);
 }
@@ -269,7 +249,7 @@ function getProofDataForAuth(
     }
   }
 
-  return null; // returns null if no matching authType is found
+  return null; 
 }
 
 function getProofDataForClaim(
@@ -288,5 +268,5 @@ function getProofDataForClaim(
     }
   }
 
-  return null; // returns null if no matching claimType, groupId and value are found
+  return null; 
 }
