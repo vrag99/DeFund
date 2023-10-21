@@ -1,0 +1,227 @@
+{
+  "address": "0xD199fDC305eeE50dEd541E9726Fe3CAB9D4A69E0",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "maker",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_project",
+          "type": "uint256"
+        }
+      ],
+      "name": "AddProject",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "funder",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "maker",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_project",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "erc20ContractAddress",
+          "type": "address"
+        }
+      ],
+      "name": "FundedProject",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "add_project",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "Project",
+          "type": "uint256"
+        },
+        {
+          "internalType": "contract IERC20",
+          "name": "erc20",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "give_funding",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "project_ID",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "project_active",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "project_funded",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xd07f457199f5f44db5441a1308d755ad5a0456ea82b195adfff2f0934f83d0cc",
+  "receipt": {
+    "to": null,
+    "from": "0x35c75eb4aCd3EF7657eE751eaC060453895960eb",
+    "contractAddress": "0xD199fDC305eeE50dEd541E9726Fe3CAB9D4A69E0",
+    "transactionIndex": 20,
+    "gasUsed": "462615",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x0fec35f66c66284a478db6fe60cb5732617eea4d6599fc7b53c4edbfa433713d",
+    "transactionHash": "0xd07f457199f5f44db5441a1308d755ad5a0456ea82b195adfff2f0934f83d0cc",
+    "logs": [],
+    "blockNumber": 4532467,
+    "cumulativeGasUsed": "3870062",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "e26e7ee75b1455e3af687bebac381c84",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"maker\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_project\",\"type\":\"uint256\"}],\"name\":\"AddProject\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"funder\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"maker\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_project\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"erc20ContractAddress\",\"type\":\"address\"}],\"name\":\"FundedProject\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"add_project\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"Project\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC20\",\"name\":\"erc20\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"give_funding\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"project_ID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"project_active\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"project_funded\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DeFund.sol\":\"DeFund\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `from` to `to` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\\n}\\n\",\"keccak256\":\"0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305\",\"license\":\"MIT\"},\"contracts/DeFund.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.7;\\n\\nimport '@openzeppelin/contracts/token/ERC20/IERC20.sol';\\n\\ncontract DeFund {\\n  mapping(uint256 => address) public project_active;\\n  mapping(uint256 => address) public project_funded;\\n\\n  uint256 public project_ID = 0;\\n\\n  event AddProject(address indexed maker, uint256 _project);\\n  event FundedProject(\\n    address indexed funder,\\n    address indexed maker,\\n    uint256 _project,\\n    uint256 amount,\\n    address erc20ContractAddress\\n  );\\n\\n  function add_project() public {\\n    project_active[project_ID] = msg.sender;\\n    emit AddProject(msg.sender, project_ID);\\n    project_ID++;\\n  }\\n\\n  function give_funding(\\n    uint256 Project,\\n    IERC20 erc20,\\n    uint256 amount\\n  ) external payable returns (bool) {\\n    address owner = project_active[Project];\\n    bool success = erc20.transferFrom(msg.sender, owner, amount);\\n    require(success);\\n\\n    delete project_active[Project];\\n    project_funded[Project] = owner;\\n\\n    emit FundedProject(msg.sender, owner, Project, amount, address(erc20));\\n    return true;\\n  }\\n}\\n\",\"keccak256\":\"0xe5f4f087e375279606cbbd5ebd90aa4bf3c655f711ea49bb1f2726899897f94e\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052600060025534801561001557600080fd5b50610760806100256000396000f3fe60806040526004361061004a5760003560e01c80631875f6cc1461004f5780631fb0faf614610066578063244eb8a614610096578063a4e19640146100d3578063fb731fc6146100fe575b600080fd5b34801561005b57600080fd5b5061006461013b565b005b610080600480360381019061007b91906104cf565b6101f8565b60405161008d91906105a1565b60405180910390f35b3480156100a257600080fd5b506100bd60048036038101906100b891906104a2565b6103ca565b6040516100ca919061054f565b60405180910390f35b3480156100df57600080fd5b506100e86103fd565b6040516100f591906105bc565b60405180910390f35b34801561010a57600080fd5b50610125600480360381019061012091906104a2565b610403565b604051610132919061054f565b60405180910390f35b33600080600254815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055503373ffffffffffffffffffffffffffffffffffffffff167f4a31f5ac372495eeadf90f1b0d3a4693dbb858e9f2e9730987f6d93338dc06ac6002546040516101d691906105bc565b60405180910390a2600260008154809291906101f190610668565b9190505550565b60008060008086815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905060008473ffffffffffffffffffffffffffffffffffffffff166323b872dd3384876040518463ffffffff1660e01b815260040161026f9392919061056a565b602060405180830381600087803b15801561028957600080fd5b505af115801561029d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102c19190610475565b9050806102cd57600080fd5b60008087815260200190815260200160002060006101000a81549073ffffffffffffffffffffffffffffffffffffffff0219169055816001600088815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f53451cfbb436de74f546931b9936b4022239e00a7d009929b84b15a057fa0a3f8887896040516103b5939291906105d7565b60405180910390a36001925050509392505050565b60016020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b60006020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600081519050610445816106e5565b92915050565b60008135905061045a816106fc565b92915050565b60008135905061046f81610713565b92915050565b60006020828403121561048b5761048a6106e0565b5b600061049984828501610436565b91505092915050565b6000602082840312156104b8576104b76106e0565b5b60006104c684828501610460565b91505092915050565b6000806000606084860312156104e8576104e76106e0565b5b60006104f686828701610460565b93505060206105078682870161044b565b925050604061051886828701610460565b9150509250925092565b61052b8161060e565b82525050565b61053a81610620565b82525050565b6105498161065e565b82525050565b60006020820190506105646000830184610522565b92915050565b600060608201905061057f6000830186610522565b61058c6020830185610522565b6105996040830184610540565b949350505050565b60006020820190506105b66000830184610531565b92915050565b60006020820190506105d16000830184610540565b92915050565b60006060820190506105ec6000830186610540565b6105f96020830185610540565b6106066040830184610522565b949350505050565b60006106198261063e565b9050919050565b60008115159050919050565b60006106378261060e565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b60006106738261065e565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8214156106a6576106a56106b1565b5b600182019050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600080fd5b6106ee81610620565b81146106f957600080fd5b50565b6107058161062c565b811461071057600080fd5b50565b61071c8161065e565b811461072757600080fd5b5056fea26469706673582212201f4578567103d0c7173f56dd1dd7717847c72238cad2a0f90996fad2e251b7f064736f6c63430008070033",
+  "deployedBytecode": "0x60806040526004361061004a5760003560e01c80631875f6cc1461004f5780631fb0faf614610066578063244eb8a614610096578063a4e19640146100d3578063fb731fc6146100fe575b600080fd5b34801561005b57600080fd5b5061006461013b565b005b610080600480360381019061007b91906104cf565b6101f8565b60405161008d91906105a1565b60405180910390f35b3480156100a257600080fd5b506100bd60048036038101906100b891906104a2565b6103ca565b6040516100ca919061054f565b60405180910390f35b3480156100df57600080fd5b506100e86103fd565b6040516100f591906105bc565b60405180910390f35b34801561010a57600080fd5b50610125600480360381019061012091906104a2565b610403565b604051610132919061054f565b60405180910390f35b33600080600254815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055503373ffffffffffffffffffffffffffffffffffffffff167f4a31f5ac372495eeadf90f1b0d3a4693dbb858e9f2e9730987f6d93338dc06ac6002546040516101d691906105bc565b60405180910390a2600260008154809291906101f190610668565b9190505550565b60008060008086815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905060008473ffffffffffffffffffffffffffffffffffffffff166323b872dd3384876040518463ffffffff1660e01b815260040161026f9392919061056a565b602060405180830381600087803b15801561028957600080fd5b505af115801561029d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102c19190610475565b9050806102cd57600080fd5b60008087815260200190815260200160002060006101000a81549073ffffffffffffffffffffffffffffffffffffffff0219169055816001600088815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508173ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f53451cfbb436de74f546931b9936b4022239e00a7d009929b84b15a057fa0a3f8887896040516103b5939291906105d7565b60405180910390a36001925050509392505050565b60016020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b60006020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600081519050610445816106e5565b92915050565b60008135905061045a816106fc565b92915050565b60008135905061046f81610713565b92915050565b60006020828403121561048b5761048a6106e0565b5b600061049984828501610436565b91505092915050565b6000602082840312156104b8576104b76106e0565b5b60006104c684828501610460565b91505092915050565b6000806000606084860312156104e8576104e76106e0565b5b60006104f686828701610460565b93505060206105078682870161044b565b925050604061051886828701610460565b9150509250925092565b61052b8161060e565b82525050565b61053a81610620565b82525050565b6105498161065e565b82525050565b60006020820190506105646000830184610522565b92915050565b600060608201905061057f6000830186610522565b61058c6020830185610522565b6105996040830184610540565b949350505050565b60006020820190506105b66000830184610531565b92915050565b60006020820190506105d16000830184610540565b92915050565b60006060820190506105ec6000830186610540565b6105f96020830185610540565b6106066040830184610522565b949350505050565b60006106198261063e565b9050919050565b60008115159050919050565b60006106378261060e565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b60006106738261065e565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8214156106a6576106a56106b1565b5b600182019050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600080fd5b6106ee81610620565b81146106f957600080fd5b50565b6107058161062c565b811461071057600080fd5b50565b61071c8161065e565b811461072757600080fd5b5056fea26469706673582212201f4578567103d0c7173f56dd1dd7717847c72238cad2a0f90996fad2e251b7f064736f6c63430008070033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 84,
+        "contract": "contracts/DeFund.sol:DeFund",
+        "label": "project_active",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_uint256,t_address)"
+      },
+      {
+        "astId": 88,
+        "contract": "contracts/DeFund.sol:DeFund",
+        "label": "project_funded",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint256,t_address)"
+      },
+      {
+        "astId": 91,
+        "contract": "contracts/DeFund.sol:DeFund",
+        "label": "project_ID",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_uint256,t_address)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => address)",
+        "numberOfBytes": "32",
+        "value": "t_address"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
