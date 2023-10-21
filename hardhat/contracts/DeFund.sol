@@ -26,11 +26,11 @@ contract DeFund {
 
   function give_funding(
     uint256 Project,
-    IERC20 erc20,
+    address erc20,
     uint256 amount
   ) external payable returns (bool) {
     address owner = project_active[Project];
-    bool success = erc20.transferFrom(msg.sender, owner, amount);
+    bool success = IERC20(erc20).transferFrom(msg.sender, owner, amount);
     require(success);
 
     delete project_active[Project];
@@ -38,5 +38,13 @@ contract DeFund {
 
     emit FundedProject(msg.sender, owner, Project, amount, address(erc20));
     return true;
+  }
+
+  function getactiveproject(uint256 project_id) public view returns (address) {
+    return project_active[project_id];
+  }
+
+  function getfundedproject(uint256 project_id) public view returns (address) {
+    return project_funded[project_id];
   }
 }
