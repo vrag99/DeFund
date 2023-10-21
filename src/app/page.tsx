@@ -14,6 +14,8 @@ import {
   AuthType,
 } from "./sismo-connect-config";
 
+import {Button} from '@nextui-org/button'; 
+
 export default function Home() {
   const [sismoConnectVerifiedResult, setSismoConnectVerifiedResult] = useState<SismoConnectVerifiedResult>();
   const [sismoConnectResponse, setSismoConnectResponse] = useState<SismoConnectResponse>();
@@ -98,7 +100,9 @@ export default function Home() {
             </table>
           </>
         )} 
+        <Button color="primary">Hello</Button>
       </main>
+      
     </>
   );
 };
