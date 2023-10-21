@@ -9,8 +9,6 @@ import {
 import { CONFIG, AUTHS, CLAIMS, SIGNATURE_REQUEST, AuthType } from "./sismo-connect-config";
 import "./home.css";
 
-import { Button } from "@nextui-org/button";
-
 export default function Home() {
   const [sismoConnectVerifiedResult, setSismoConnectVerifiedResult] =
     useState<SismoConnectVerifiedResult>();
@@ -28,7 +26,7 @@ export default function Home() {
           <h1 className="mb-4 text-6xl drop-shadow-xl bg-gradient-to-r from-red-500 via-orange-500 to-orange-200 bg-clip-text text-transparent font-extrabold leading-none tracking-tight md:text-6xl lg:text-9xl">
             DeFund
           </h1>
-          <p className="text-xl mb-8 font-semibold text-orange-100 lg:text-2xl">We invest in <span className="underline underline-offset-2 decoration-2 decoration-blue-400 dark:decoration-blue-600 :decoration-2">world's potential</span> :)</p>
+          <p className="text-xl mb-8 font-semibold text-orange-100 lg:text-2xl">We invest in <span className="underline underline-offset-2 decoration-2 decoration-blue-400 dark:decoration-blue-600 lg:decoration-4">world's potential</span> :)</p>
           {pageState == "init" ? (
             <>
               <SismoConnectButton
