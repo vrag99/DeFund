@@ -1,10 +1,10 @@
-type AddProject @entity(immutable: true) {
+type AddProject @entity(mutable: true) {
   id: Bytes!
   maker: Bytes! # address
   _project: BigInt! # uint256
 }
 
-type FundedProject @entity(immutable: true) {
+type FundedProject @entity(mutable: true) {
   id: Bytes!
   funder: Bytes! # address
   maker: Bytes! # address
