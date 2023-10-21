@@ -14,8 +14,7 @@ contract DeFund {
     address indexed funder,
     address indexed maker,
     uint256 _project,
-    uint256 amount,
-    address erc20ContractAddress
+    uint256 amount
   );
 
   function add_project() public {
@@ -36,7 +35,7 @@ contract DeFund {
     delete project_active[Project];
     project_funded[Project] = owner;
 
-    emit FundedProject(msg.sender, owner, Project, amount, address(erc20));
+    emit FundedProject(msg.sender, owner, Project, amount);
     return true;
   }
 
