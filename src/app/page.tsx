@@ -6,37 +6,44 @@ import {
   SismoConnectResponse,
   SismoConnectVerifiedResult,
 } from "@sismo-core/sismo-connect-react";
-import { CONFIG, AUTHS, CLAIMS, SIGNATURE_REQUEST, AuthType } from "./sismo-connect-config";
+import { CONFIG, AUTHS, CLAIMS, SIGNATURE_REQUEST } from "./sismo-connect-config";
 import "./home.css";
+import {Input} from '@nextui-org/react'
+import {Button} from "@nextui-org/react";
 
 export default function Home() {
   const [sismoConnectVerifiedResult, setSismoConnectVerifiedResult] =
     useState<SismoConnectVerifiedResult>();
-  const [sismoConnectResponse, setSismoConnectResponse] = useState<SismoConnectResponse>();
   const [pageState, setPageState] = useState<string>("init");
   const [error, setError] = useState<string>("");
-
   const [name , setName] = useState<string>("")
+  const [loggedIn , setLoggedIn] = useState<boolean>(false)
+  const [walletAddress , setWalletAddress] = useState<string | null>(localStorage.getItem('walletAddress'))
 
   useEffect(()=>{
-    const checkAuth =async () => {
-      const res = await fetch("http://localhost:8000/check-authentication",{
-      credentials:'include'
+    if(walletAddress){
+      const getUserFromAddress =async () => {
+      const res = await fetch("http://localhost:8000/check-wallet",{
+        method:'POST',
+        body:JSON.stringify({walletAddress})
      })
      if(res.ok){
       window.location.replace('http://localhost:3000/home')
+      setLoggedIn(true)
+     } 
+     if(res.status === 403){
+      setLoggedIn(false)
      }
     }
-    checkAuth()
-  }, [])
-
-
+    getUserFromAddress()
+    }
+  }, [walletAddress])
   const handleLogin = async ()=>{
-    console.log(sismoConnectVerifiedResult)
+    const walletAddress = sismoConnectVerifiedResult?.auths?.[0].userId
     if(sismoConnectVerifiedResult){
      const body = {
       name,
-      walletAddress:sismoConnectVerifiedResult.auths?.[0].userId
+      walletAddress
     }
     console.log(body)
     const res = await fetch('http://localhost:8000/auth' , {
@@ -44,9 +51,9 @@ export default function Home() {
       body:JSON.stringify(body),
        headers: {"Content-type": "application/json;charset=UTF-8"}
     })
-    const res1 = await res.body
-    if(res.ok){
+    if(res.ok && walletAddress){
       window.location.replace("http://localhost:3000/choose")
+      localStorage.setItem('walletAddress' , walletAddress)
     } }
    }
     return (
@@ -59,7 +66,7 @@ export default function Home() {
             DeFund
           </h1>
           <p className="text-xl mb-8 font-semibold text-orange-100 lg:text-2xl">We invest in <span className="underline underline-offset-2 decoration-2 decoration-blue-400 dark:decoration-blue-600 :decoration-2">world's potential</span> :)</p>
-          {pageState == "init" ? (
+          {pageState == "init" && !loggedIn ? (
               <SismoConnectButton
                 overrideStyle={{
                   background: '#fc711a',
@@ -71,7 +78,6 @@ export default function Home() {
                 signature={SIGNATURE_REQUEST}
                 text="SSO with Sismo"
                 onResponse={async (response: SismoConnectResponse) => {
-                  setSismoConnectResponse(response);
                   setPageState("verifying");
 
                   const verifiedResult = await fetch("/api/verify", {
@@ -93,13 +99,13 @@ export default function Home() {
               
               {///@ts-ignore
                pageState === "verifying" ? (
-                <span className="verifying"> Verifying ZK Proofs... </span>
+                <span className="verifying text-white"> Verifying ZK Proofs... </span>
               ) : (
                 <>
                   {Boolean(error) ? (
                     <span className="error"> Error verifying ZK Proofs: {error} </span>
                   ) : (
-                    <span className="verified"> ZK Proofs verified!</span>
+                    <span className="verified text-white"> ZK Proofs verified!</span>
                   )}
                 </>
               )}
@@ -107,8 +113,10 @@ export default function Home() {
                 )}
         {sismoConnectVerifiedResult && (
           <>
-            <input onChange={(e)=>setName(e.target.value)} />
-            <button onClick={handleLogin}>Login</button>
+          <div className="flex max-w-[300px] mt-10 flex-col space-y-5">
+            <Input type="text" className="text-white" placeholder="Name" onChange={(e)=>setName(e.target.value)} />  
+            <Button className="bg-[#fc711a]" onClick={handleLogin}>Login</Button>
+            </div>
           </>
         )} 
       </div>
