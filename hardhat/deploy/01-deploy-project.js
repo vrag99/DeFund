@@ -22,3 +22,4 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     await verify(DeFund.address, arguments)
   }
 }
+module.exports.tags = ['all', 'project']

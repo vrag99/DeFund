@@ -34,6 +34,7 @@ export function handleFundedProject(event: FundedProjectEvent): void {
   projectFunded.amount = event.params.amount
   projectFunded.funder = event.params.funder
   projectFunded.maker = event.params.maker
+
   projectFunded.erc20ContractAddress = event.params.erc20ContractAddress
   projectAdded.maker = Address.fromString(
     '0x000000000000000000000000000000000000dEaD'
