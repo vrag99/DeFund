@@ -52,18 +52,18 @@ export default function Home() {
     return (
         <main className="main dark">
         <div className="hvcenter w-full h-screen">
-          <h1 className="mb-2 text-2xl font-semibold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl dark:text-white">
+          <h1 className="mb-2 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
             Welcome to
           </h1>
-          <h1 className="mb-8 text-6xl bg-clip-text bg-gradient-to-r from-oran font-extrabold leading-none tracking-tight text-gray-900 md:text-6xl lg:text-9xl dark:text-white">
+          <h1 className="mb-4 text-6xl drop-shadow-xl bg-gradient-to-r from-red-500 via-orange-500 to-orange-200 bg-clip-text text-transparent font-extrabold leading-none tracking-tight md:text-6xl lg:text-9xl">
             DeFund
           </h1>
+          <p className="text-xl mb-8 font-semibold text-orange-100 lg:text-2xl">We invest in <span className="underline underline-offset-2 decoration-2 decoration-blue-400 dark:decoration-blue-600 :decoration-2">world's potential</span> :)</p>
           {pageState == "init" ? (
               <SismoConnectButton
                 overrideStyle={{
                   background: '#fc711a',
                   border: 'none',
-
                 }}
                 config={CONFIG}
                 auths={AUTHS}
