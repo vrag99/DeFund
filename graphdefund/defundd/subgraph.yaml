@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DeFund
+    network: sepolia
+    source:
+      address: "0xf793d3fcB6D6b3B829426CaC31B21C7cf60Df7f9"
+      abi: DeFund
+      startBlock: 4535533
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AddProject
+        - FundedProject
+      abis:
+        - name: DeFund
+          file: ./abis/DeFund.json
+      eventHandlers:
+        - event: AddProject(indexed address,uint256)
+          handler: handleAddProject
+        - event: FundedProject(indexed address,indexed address,uint256,uint256,address)
+          handler: handleFundedProject
+      file: ./src/de-fund.ts
