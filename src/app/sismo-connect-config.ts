@@ -36,10 +36,8 @@ export const CONFIG: SismoConnectConfig = {
 export const AUTHS: AuthRequest[] = [
   // Anonymous identifier of the vault for this app
   // vaultId = hash(vaultSecret, appId).
-  // full docs: https://docs.sismo.io/sismo-docs/build-with-sismo-connect/technical-documentation/vault-and-proof-identifiers
-  { authType: AuthType.VAULT },
+  // full docs: https://docs.sismo.io/sismo-docs
   { authType: AuthType.EVM_ACCOUNT },
-  { authType: AuthType.GITHUB, isOptional: true },
   // { authType: AuthType.TWITTER, isOptional: true },
   // { authType: AuthType.TELEGRAM, userId: "875608110", isOptional: true },
 ];
@@ -54,10 +52,6 @@ export const CLAIMS: ClaimRequest[] = [
     groupId: "0xda1c3726426d5639f4c6352c2c976b87", // impersonated github:dhadrien has 1 contribution, eligible
   },
   {
-    // claim ENS DAO Voters Data Group membership: https://factory.sismo.io/groups-explorer?search=0x85c7ee90829de70d0d51f52336ea4722
-    // Data Group members          = voters in ENS DAO
-    // value for each group member = number of votes in ENS DAO
-    // request user to prove membership in the group with value >= 17
     groupId: "0x85c7ee90829de70d0d51f52336ea4722",
     claimType: ClaimType.GTE,
     value: 4, // impersonated dhadrien.sismo.eth has 17 votes, eligible

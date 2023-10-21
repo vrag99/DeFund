@@ -1,6 +1,6 @@
 "use client";
 
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import {
   SismoConnectButton,
   SismoConnectResponse,
@@ -20,8 +20,40 @@ export default function Home() {
   const [pageState, setPageState] = useState<string>("init");
   const [error, setError] = useState<string>("");
 
-  return (
-    <>
+  const [name , setName] = useState<string>("")
+
+  useEffect(()=>{
+    const checkAuth =async () => {
+      const res = await fetch("http://localhost:8000/check-authentication",{
+      credentials:'include'
+     })
+     if(res.ok){
+      window.location.replace('http://localhost:3000/home')
+     }
+    }
+    checkAuth()
+  }, [])
+
+
+  const handleLogin = async ()=>{
+    console.log(sismoConnectVerifiedResult)
+    if(sismoConnectVerifiedResult){
+     const body = {
+      name,
+      walletAddress:sismoConnectVerifiedResult.auths?.[0].userId
+    }
+    console.log(body)
+    const res = await fetch('http://localhost:8000/auth' , {
+      method:"POST",
+      body:JSON.stringify(body),
+       headers: {"Content-type": "application/json;charset=UTF-8"}
+    })
+    const res1 = await res.body
+    if(res.ok){
+      window.location.replace("http://localhost:3000/choose")
+    } }
+   }
+    return (<>
       <main className="main">
         {pageState == "init" ? (
           <>
@@ -53,15 +85,6 @@ export default function Home() {
           </>
         ) : (
           <>
-            <button
-              onClick={() => {
-                window.location.href = "/";
-              }}
-            >
-              {" "}
-              RESET{" "}
-            </button>
-            <br></br>
             <div className="status-wrapper">
               {pageState == "verifying" ? (
                 <span className="verifying"> Verifying ZK Proofs... </span>
@@ -79,26 +102,11 @@ export default function Home() {
         )}
         {sismoConnectVerifiedResult && (
           <>
-            <h3>Verified Auths</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>AuthType</th>
-                  <th>Verified UserId</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sismoConnectVerifiedResult.auths.map((auth, index) => (
-                  <tr key={index}>
-                    <td>{AuthType[auth.authType]}</td>
-                    <td>{auth.userId}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <input onChange={(e)=>setName(e.target.value)} />
+            <button onClick={handleLogin}>Login</button>
           </>
         )} 
       </main>
     </>
-  );
+    );
 };
