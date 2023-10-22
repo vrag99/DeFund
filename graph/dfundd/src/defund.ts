@@ -1,35 +1,43 @@
+import { Address, BigInt } from '@graphprotocol/graph-ts'
 import {
   AddProject as AddProjectEvent,
-  FundedProject as FundedProjectEvent
-} from "../generated/defund/defund"
-import { AddProject, FundedProject } from "../generated/schema"
+  FundedProject as FundedProjectEvent,
+} from '../generated/defund/defund'
+import { AddProject, FundedProject } from '../generated/schema'
 
 export function handleAddProject(event: AddProjectEvent): void {
-  let entity = new AddProject(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.maker = event.params.maker
-  entity._project = event.params._project
+  let id = event.params.maker
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  let projectAdded = AddProject.load(id)
+  if (!projectAdded) {
+    projectAdded = new AddProject(id)
+  }
+  projectAdded._project = event.params._project
+  projectAdded.maker = event.params.maker
 
-  entity.save()
+  projectAdded.save()
 }
 
 export function handleFundedProject(event: FundedProjectEvent): void {
-  let entity = new FundedProject(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+  let id = event.params.maker
+  let projectFunded = FundedProject.load(id)
+  if (!projectFunded) {
+    projectFunded = new FundedProject(id)
+  }
+  let projectAdded = AddProject.load(id)
+  if (!projectAdded) {
+    projectAdded = new AddProject(id)
+  }
+
+  projectFunded._project = event.params._project
+  projectFunded.amount = event.params.amount
+  projectFunded.funder = event.params.funder
+  projectFunded.maker = event.params.maker
+
+  projectAdded.maker = Address.fromString(
+    '0x000000000000000000000000000000000000dEaD'
   )
-  entity.funder = event.params.funder
-  entity.maker = event.params.maker
-  entity._project = event.params._project
-  entity.amount = event.params.amount
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
+  projectFunded.save()
+  projectAdded.save()
 }

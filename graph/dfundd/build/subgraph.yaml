@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: defund
+    network: sepolia
+    source:
+      address: "0xB6Ec1Fc4a4BE223259f293981Bfc211AC9636B02"
+      abi: defund
+      startBlock: 4535659
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AddProject
+        - FundedProject
+      abis:
+        - name: defund
+          file: defund/abis/defund.json
+      eventHandlers:
+        - event: AddProject(indexed address,uint256)
+          handler: handleAddProject
+        - event: FundedProject(indexed address,indexed address,uint256,uint256)
+          handler: handleFundedProject
+      file: defund/defund.wasm
