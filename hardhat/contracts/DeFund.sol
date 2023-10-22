@@ -9,17 +9,31 @@ contract DeFund {
 
   uint256 public project_ID = 0;
 
-  event AddProject(address indexed maker, uint256 _project);
+  event AddProject(
+    address indexed maker,
+    uint256 project,
+    string youtube,
+    string github,
+    string name,
+    string description,
+    uint256 amount
+  );
   event FundedProject(
     address indexed funder,
     address indexed maker,
-    uint256 _project,
+    uint256 project,
     uint256 amount
   );
 
-  function add_project() public {
+  function add_project(
+    string memory youtube,
+    string memory github,
+    string memory description,
+    string memory name,
+    uint256 amount
+  ) public {
     project_active[project_ID] = msg.sender;
-    emit AddProject(msg.sender, project_ID);
+    emit AddProject(msg.sender, project_ID,youtube,github,name,description,amount);
     project_ID++;
   }
 

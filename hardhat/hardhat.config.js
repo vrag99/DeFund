@@ -18,6 +18,10 @@ const SEPOLIA_RPC_URL =
   process.env.SEPOLIA_RPC_URL ||
   'https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY'
 
+const GOERLI_RPC_URL =
+  process.env.GOERLI_RPC_URL ||
+  'https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY'
+
 const PRIVATE_KEY = process.env.PRIVATE_KEY || '0x'
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
@@ -48,6 +52,15 @@ module.exports = {
       //   },
       saveDeployments: true,
       chainId: 11155111,
+    },
+    goerli: {
+      url: GOERLI_RPC_URL,
+      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+      //   accounts: {
+      //     mnemonic: MNEMONIC,
+      //   },
+      saveDeployments: true,
+      chainId: 5,
     },
     mainnet: {
       url: MAINNET_RPC_URL,
