@@ -1,15 +1,13 @@
-import {create} from 'zustand'
+/* import {create} from 'zustand'
+
+import { userState , intialState } from './features/userSlice';
+
+interface Actions{
+    updata:(user:userState)=>void
+ }
 
 
-const useStore = create((set)=>({
-    userId:0,
-    name:'',
-    walletAddress:'',
-    isInvestor:false,
-    isSeeker:false,
-    update:()=>set((state:any)=>({...state}))
-})) 
 
 
-export default useStore;
+export default useStore; */
 

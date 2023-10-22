@@ -37,7 +37,7 @@ export default function Auth() {
   }
 
   const handleSeekerClick = async () => {
-    const res = await fetch('http://localhost:8000/investor/seeker', {
+    const res = await fetch('http://localhost:8000/seeker/create', {
       method: 'POST',
       body: JSON.stringify({userId}),
       headers: { "Content-type": "application/json;charset=UTF-8" }

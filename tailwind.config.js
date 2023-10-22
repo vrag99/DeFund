@@ -7,7 +7,11 @@ module.exports = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth:{
+        '4/5':'80%'
+      }
+    },
   },
   darkMode: "class",
   plugins: [nextui()]

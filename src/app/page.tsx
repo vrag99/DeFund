@@ -1,19 +1,21 @@
 "use client"
-
-
 import { useEffect, useState } from "react";
 import { SismoConnectButton, SismoConnectResponse, SismoConnectVerifiedResult } from "@sismo-core/sismo-connect-react";
 import { CONFIG, AUTHS, CLAIMS, SIGNATURE_REQUEST, AuthType } from "./sismo-connect-config";
 import "./home.css";
 import { Input, user } from '@nextui-org/react';
 import { Button } from "@nextui-org/react";
-import {store } from './store'
 import { useAppDispatch } from "./hooks/redux";
 import { updateUser } from "./features/userSlice";
-import { userApi } from "./services/user";/* 
-import useStore from "./userStore"; */
+import { userApi } from "./services/user"
+
+
+
+
 
 export default function Home() {
+
+
   const [sismoConnectVerifiedResult, setSismoConnectVerifiedResult] = useState<SismoConnectVerifiedResult>();
   const [pageState, setPageState] = useState<string>("init");
   const [error1, setError] = useState<string>("");
@@ -22,8 +24,7 @@ export default function Home() {
   const dispatch = useAppDispatch()
   const [trigger , {data,error,isLoading}] = userApi.endpoints.getUserFromWallet.useLazyQuery()
   const [loggedIn  , setLoggedIn] = useState<boolean>(false)
-/* 
-  const updateUser = useStore((state)=>state?.updateUser) */
+
 
   
   useEffect(() => {
@@ -72,6 +73,7 @@ export default function Home() {
   return (
     <>
       <main className="main dark">
+
         <div className="hvcenter w-full h-screen">
           <h1 className="mb-2 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
             Welcome to

@@ -1,0 +1,88 @@
+[
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "AddProject",
+        "inputs": [
+            { "type": "address", "name": "maker", "indexed": true },
+            { "type": "uint256", "name": "_project", "indexed": false }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "FundedProject",
+        "inputs": [
+            { "type": "address", "name": "funder", "indexed": true },
+            { "type": "address", "name": "maker", "indexed": true },
+            { "type": "uint256", "name": "_project", "indexed": false },
+            { "type": "uint256", "name": "amount", "indexed": false }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "add_project",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "getactiveproject",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [{ "type": "uint256", "name": "project_id" }],
+        "outputs": [{ "type": "address" }]
+    },
+    {
+        "type": "function",
+        "name": "getfundedproject",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [{ "type": "uint256", "name": "project_id" }],
+        "outputs": [{ "type": "address" }]
+    },
+    {
+        "type": "function",
+        "name": "give_funding",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
+        "inputs": [
+            { "type": "uint256", "name": "Project" },
+            { "type": "address", "name": "erc20" },
+            { "type": "uint256", "name": "amount" }
+        ],
+        "outputs": [{ "type": "bool" }]
+    },
+    {
+        "type": "function",
+        "name": "project_ID",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [{ "type": "uint256" }]
+    },
+    {
+        "type": "function",
+        "name": "project_active",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [{ "type": "uint256" }],
+        "outputs": [{ "type": "address" }]
+    },
+    {
+        "type": "function",
+        "name": "project_funded",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [{ "type": "uint256" }],
+        "outputs": [{ "type": "address" }]
+    }
+]
