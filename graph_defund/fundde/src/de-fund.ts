@@ -1,40 +1,46 @@
+import { BigInt, bigInt } from '@graphprotocol/graph-ts'
 import {
   AddProject as AddProjectEvent,
-  FundedProject as FundedProjectEvent
-} from "../generated/DeFund/DeFund"
-import { AddProject, FundedProject } from "../generated/schema"
+  FundedProject as FundedProjectEvent,
+} from '../generated/DeFund/DeFund'
+import { AddProject, FundedProject } from '../generated/schema'
 
 export function handleAddProject(event: AddProjectEvent): void {
-  let entity = new AddProject(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.maker = event.params.maker
-  entity.project = event.params.project
-  entity.youtube = event.params.youtube
-  entity.github = event.params.github
-  entity.name = event.params.name
-  entity.description = event.params.description
-  entity.amount = event.params.amount
+  let id = event.params.maker
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  let projectAdded = AddProject.load(id)
+  if (!projectAdded) {
+    projectAdded = new AddProject(id)
+  }
+  projectAdded.maker = event.params.maker
+  projectAdded.project = event.params.project
+  projectAdded.youtube = event.params.youtube
+  projectAdded.github = event.params.github
+  projectAdded.name = event.params.name
+  projectAdded.description = event.params.description
+  projectAdded.amount = event.params.amount
 
-  entity.save()
+  projectAdded.save()
 }
 
 export function handleFundedProject(event: FundedProjectEvent): void {
-  let entity = new FundedProject(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.funder = event.params.funder
-  entity.maker = event.params.maker
-  entity.project = event.params.project
-  entity.amount = event.params.amount
+  let id = event.params.maker
+  let projectFunded = FundedProject.load(id)
+  if (!projectFunded) {
+    projectFunded = new FundedProject(id)
+  }
+  let money: BigInt
+  if (projectFunded) {
+    money = projectFunded.amount
+  } else {
+    money = new BigInt(0)
+  }
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  projectFunded.funder = event.params.funder
+  projectFunded.maker = event.params.maker
+  projectFunded.project = event.params.project
+  //@ts-ignore
+  projectFunded.amount = event.params.amount + money
 
-  entity.save()
+  projectFunded.save()
 }
