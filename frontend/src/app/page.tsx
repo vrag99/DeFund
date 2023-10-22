@@ -6,7 +6,6 @@ import "./home.css";
 import { Input, user } from '@nextui-org/react';
 import { Button } from "@nextui-org/react";
 import { useAppDispatch } from "./hooks/redux";
-import { updateUser } from "./features/userSlice";
 import { userApi } from "./services/user"
 
 
@@ -21,7 +20,6 @@ export default function Home() {
   const [error1, setError] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [walletAddress, setWalletAddress] = useState<string | null>(window.localStorage.getItem('walletAddress'));
-  const dispatch = useAppDispatch()
   const [trigger , {data,error,isLoading}] = userApi.endpoints.getUserFromWallet.useLazyQuery()
   const [loggedIn  , setLoggedIn] = useState<boolean>(false)
 
@@ -33,16 +31,23 @@ export default function Home() {
         if(!isLoading && !error){
         if(!(data?.isInvestor || data?.isSeeker) && data !== undefined){
           setLoggedIn(true)
-          window.location.replace('http://localhost:3000/auth')
+          window.location.replace('http://localhost:3000/choice')
         } else if(data?.isInvestor){
           setLoggedIn(true)
+          window.location.replace('http://localhost:3000/projects')
         } else if (data?.isSeeker){
           setLoggedIn(true)
-        }
-  
-  }}
+          window.location.replace('http://localhost:3000/projects')
+        }}}
   }, [walletAddress , data , isLoading, error,trigger]);
 
+
+
+  const handleLogout = ()=>{
+   window.localStorage.removeItem('user')
+   window.localStorage.removeItem('walletAddress')
+   window.location.replace('http://localhost:3000/')
+  }
 
   useEffect(()=>{
     if(data) localStorage.setItem('user' , JSON.stringify(data))
@@ -63,9 +68,9 @@ export default function Home() {
       });
       const user = await res.json()
       if (res.ok && walletAddress) {
-        dispatch(updateUser(user))
-        window.location.replace("http://localhost:3000/choose");
-        localStorage.setItem('walletAddress', walletAddress);
+        localStorage.setItem('user',JSON.stringify(user))
+        localStorage.setItem('walletAddress' , walletAddress)
+        window.location.replace("http://localhost:3000/choice");
       }
     }
   };
@@ -74,6 +79,7 @@ export default function Home() {
     <>
       <main className="main dark">
 
+      <button onClick={handleLogout}/>
         <div className="hvcenter w-full h-screen">
           <h1 className="mb-2 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
             Welcome to

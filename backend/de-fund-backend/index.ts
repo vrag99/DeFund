@@ -205,7 +205,24 @@ app.get('/seeker/:id/projects' ,async (req:Request , res:Response)=>{
   res.status(200).send(projects)
 })
 
-
+app.post('/pollCreate', async (req: Request, res: Response)=> {
+  try {
+    console.log(req.body)
+    const { prompt, projectName, yes, no } = req.body;
+    const newPoll = await prisma.poll.create({
+      data: {
+        prompt,
+        projectName,
+        yes,
+        no,
+      },
+    });
+    res.json(newPoll);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+})
 
 app.listen(port , ()=>{
   console.log('⚡️[server]: Server is running at http://localhost:8000')

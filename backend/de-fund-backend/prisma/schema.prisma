@@ -48,3 +48,11 @@ model Project {
   investorId Int?
   isFunded Boolean @default(false)
 }
+
+model Poll {
+  id Int @id @default(autoincrement())
+  prompt String
+  projectName String
+  yes Int
+  no Int
+}

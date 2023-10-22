@@ -14,25 +14,20 @@ export default function Auth() {
 
   const [userId , setUserId] = useState<number>(0)
   useEffect(()=>{
-
   const userJson = localStorage.getItem('user')
   if(userJson) {
     const user = JSON.parse(userJson)
     setUserId(user.id)
-  }
-  } , [])
-  console.log(userId)
+  }} , [])
   const handleInvestorClick = async () => {
-    console.log(userId)
     const res = await fetch('http://localhost:8000/investor/create', {
       method: 'POST',
       body: JSON.stringify({userId}),
       headers: { "Content-type": "application/json;charset=UTF-8" }
     })
     const inverstor = await res.json()
-    console.log(inverstor)
     if (res.ok) {
-      window.location.replace('http://localhost:3000/home')
+      window.location.replace('http://localhost:3000/projects')
     }
   }
 
@@ -43,9 +38,8 @@ export default function Auth() {
       headers: { "Content-type": "application/json;charset=UTF-8" }
     })
     const seeker = await res.json()
-    console.log(seeker)
     if (res.ok) {
-      window.location.replace('http://localhost:3000/home')
+      window.location.replace('http://localhost:3000/projects')
     }
   }
 
