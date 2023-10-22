@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/seeker-profile/MailIcon.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/seeker-profile-new/MailIcon.jsx", "src/app/components-new/AnchorIcon.tsx"],
   "exclude": ["node_modules"]
 }

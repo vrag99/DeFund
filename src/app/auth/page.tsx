@@ -1,6 +1,6 @@
 "use client";
 // import {Card, CardHeader, CardBody, Image, CardFooter, Button} from "@nextui-org/react";
-import ImageCard from "../components/imagecard";
+import ImageCard from "../components-new/imagecard";
 
 export default function Auth() {
   return (

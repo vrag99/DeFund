@@ -20,6 +20,7 @@ import {
 } from "@nextui-org/react";
 import { cryptoList } from "./cryptocurrencies.tsx";
 import { Textarea, Select, SelectItem, Divider } from "@nextui-org/react";
+import ProjectCard from "../components-new/projectCard.tsx";
 
 export default function SeekerProfile() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -88,35 +89,15 @@ export default function SeekerProfile() {
           </h2>
 
           <div className="flex flex-row space-x-3">
-            <Card className="p-8 max-w-md min-w-min">
-              <div className="flex flex-row space-x-4">
-                <CircularProgress
-                  size="lg"
-                  value={2}
-                  maxValue={10}
-                  classNames={{
-                    base: "max-w-md",
-                    track: "drop-shadow-md border",
-                    indicator: "text-orange-600 font-semibold",
-                    value: "font-semibold text-tiny",
-                  }}
-                  formatOptions={{ style: "currency", currency: "ETH" }}
-                  showValueLabel={true}
-                ></CircularProgress>
-                <div>
-                  <h3 className="text-xl mb-2 font-extrabold">Umbrella Corporation</h3>
-                  <p className="text-md text-orange-50">
-                    This is the description for the app. How did you like it?
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card>
-              <CardBody>
-                <p>Make beautiful websites regardless of your design experience.</p>
-              </CardBody>
-            </Card>
+            <ProjectCard inputProps={{
+              name: "Umbrella Corp",
+              description: "For other uses of the name Umbrella, see Umbrella (disambiguation). For private military company, see Blue Umbrella. The Umbrella Corporation was a multinational conglomerate with subsidiaries active in a variety of industries from the 1980s to the early 2000s. Umbrella had influence in the production and sale of cosmetics, chemicals, pharmaceuticals, industrial machine production, consumer products, health foods, the transportation industry and tourism. Umbrella's large array of subsidiaries was typical for large-scale corporations, though it was purposely built to cover up illegal activities.",
+              currentFunding: 5,
+              reqFunding: 10,
+              github: "https://github.com/",
+              video: "https://youtube.com/",
+              isInvestor: true,
+            }} />
           </div>
         </div>
       </div>
