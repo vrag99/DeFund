@@ -1,0 +1,24 @@
+type AddProject @entity(immutable: true) {
+  id: Bytes!
+  maker: Bytes! # address
+  project: BigInt! # uint256
+  youtube: String! # string
+  github: String! # string
+  name: String! # string
+  description: String! # string
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FundedProject @entity(immutable: true) {
+  id: Bytes!
+  funder: Bytes! # address
+  maker: Bytes! # address
+  project: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
