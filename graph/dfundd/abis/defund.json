@@ -44,12 +44,6 @@
         "internalType": "uint256",
         "name": "amount",
         "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "erc20ContractAddress",
-        "type": "address"
       }
     ],
     "name": "FundedProject",
@@ -64,81 +58,51 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "Project",
-        "type": "uint256"
-      },
-      {
-        "internalType": "contract IERC20",
-        "name": "erc20",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+      { "internalType": "uint256", "name": "project_id", "type": "uint256" }
+    ],
+    "name": "getactiveproject",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "project_id", "type": "uint256" }
+    ],
+    "name": "getfundedproject",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "Project", "type": "uint256" },
+      { "internalType": "address", "name": "erc20", "type": "address" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
     ],
     "name": "give_funding",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "payable",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "project_ID",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "name": "project_active",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "name": "project_funded",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   }

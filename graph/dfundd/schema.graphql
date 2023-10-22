@@ -13,7 +13,6 @@ type FundedProject @entity(immutable: true) {
   maker: Bytes! # address
   _project: BigInt! # uint256
   amount: BigInt! # uint256
-  erc20ContractAddress: Bytes! # address
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

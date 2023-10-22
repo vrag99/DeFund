@@ -3,12 +3,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: DeFund
+    name: defund
     network: sepolia
     source:
-      address: "0xD199fDC305eeE50dEd541E9726Fe3CAB9D4A69E0"
-      abi: DeFund
-      startBlock: 4532465
+      address: "0xB6Ec1Fc4a4BE223259f293981Bfc211AC9636B02"
+      abi: defund
+      startBlock: 4535659
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -17,11 +17,11 @@ dataSources:
         - AddProject
         - FundedProject
       abis:
-        - name: DeFund
-          file: ./abis/DeFund.json
+        - name: defund
+          file: ./abis/defund.json
       eventHandlers:
         - event: AddProject(indexed address,uint256)
           handler: handleAddProject
-        - event: FundedProject(indexed address,indexed address,uint256,uint256,address)
+        - event: FundedProject(indexed address,indexed address,uint256,uint256)
           handler: handleFundedProject
-      file: ./src/de-fund.ts
+      file: ./src/defund.ts

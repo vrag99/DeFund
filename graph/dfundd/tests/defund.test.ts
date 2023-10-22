@@ -8,9 +8,9 @@ import {
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
 import { AddProject } from "../generated/schema"
-import { AddProject as AddProjectEvent } from "../generated/DeFund/DeFund"
-import { handleAddProject } from "../src/de-fund"
-import { createAddProjectEvent } from "./de-fund-utils"
+import { AddProject as AddProjectEvent } from "../generated/defund/defund"
+import { handleAddProject } from "../src/defund"
+import { createAddProjectEvent } from "./defund-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0

@@ -1,8 +1,0 @@
-{
-  "sepolia": {
-    "DeFund": {
-      "address": "0xf793d3fcB6D6b3B829426CaC31B21C7cf60Df7f9",
-      "startBlock": 4535533
-    }
-  }
-}

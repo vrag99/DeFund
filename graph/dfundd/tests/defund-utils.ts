@@ -1,6 +1,6 @@
 import { newMockEvent } from "matchstick-as"
 import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts"
-import { AddProject, FundedProject } from "../generated/DeFund/DeFund"
+import { AddProject, FundedProject } from "../generated/defund/defund"
 
 export function createAddProjectEvent(
   maker: Address,
@@ -27,8 +27,7 @@ export function createFundedProjectEvent(
   funder: Address,
   maker: Address,
   _project: BigInt,
-  amount: BigInt,
-  erc20ContractAddress: Address
+  amount: BigInt
 ): FundedProject {
   let fundedProjectEvent = changetype<FundedProject>(newMockEvent())
 
@@ -48,12 +47,6 @@ export function createFundedProjectEvent(
   )
   fundedProjectEvent.parameters.push(
     new ethereum.EventParam("amount", ethereum.Value.fromUnsignedBigInt(amount))
-  )
-  fundedProjectEvent.parameters.push(
-    new ethereum.EventParam(
-      "erc20ContractAddress",
-      ethereum.Value.fromAddress(erc20ContractAddress)
-    )
   )
 
   return fundedProjectEvent
