@@ -51,7 +51,7 @@ export default function SeekerProfile() {
   console.log(chainId , account , isWeb3Enabled)
 
   const chainString = chainId ? parseInt(chainId).toString() : "31337"
-  const defundAddress = "0xB6Ec1Fc4a4BE223259f293981Bfc211AC9636B02"
+  const defundAddress = "0x17Fe9424EEF56Fa2A9Fd47615B0645B987Be4cBa"
   let params:any;
   const {runContractFunction} = useWeb3Contract(params) 
 
@@ -67,7 +67,7 @@ export default function SeekerProfile() {
         params:{
           Project:projectId,
           amount:amount,
-          erc20:''
+          erc20:'0x53844F9577C2334e541Aec7Df7174ECe5dF1fCf0'
         }
       }
 
@@ -107,7 +107,7 @@ export default function SeekerProfile() {
       const defundOptions = {
         abi:defundAbi,
         contractAddress:defundAddress,
-        functionName:"send_funding",
+        functionName:"add_project",
         params:{
           youtube:videoLink,
           github:gitHubLink,
@@ -231,8 +231,19 @@ export default function SeekerProfile() {
               handleFunding:handleFunding,
               id:project.id
             }} />
-          ))}
             
+          ))}
+            <ProjectCard inputProps={{
+              name: "ZK Phi",
+              description:"A simple zero knowledge project",
+              currentFunding:0,
+              reqFunding: 10,
+              github: "https://github.com/",
+              video: "https://youtube.com/",
+              isInvestor: userData?.isInvestor,
+              handleFunding:handleFunding,
+              id:1
+            }} />
 
 
           </div> 

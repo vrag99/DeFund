@@ -51,7 +51,7 @@ export default function SeekerProfile() {
   console.log(chainId , account , isWeb3Enabled)
 
   const chainString = chainId ? parseInt(chainId).toString() : "31337"
-  const defundAddress = "0xB6Ec1Fc4a4BE223259f293981Bfc211AC9636B02"
+  const defundAddress = "0x17Fe9424EEF56Fa2A9Fd47615B0645B987Be4cBa"
   const [proceeds , setProceeds] = useState("0")
   let params:any;
   const {runContractFunction} = useWeb3Contract(params) 
@@ -64,14 +64,14 @@ export default function SeekerProfile() {
       const defundOptions = {
         abi:defundAbi,
         contractAddress:defundAddress,
-        functionName:"send_funding",
+        functionName:"add_project",
         params:{
           youtube:videoLink,
           github:gitHubLink,
           name:name,
           description:description,
           amount:amount,
-          Project:projectId
+          
         }
       }
 
