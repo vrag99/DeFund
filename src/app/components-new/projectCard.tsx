@@ -1,10 +1,9 @@
+
 import { Card, CircularProgress, Button, Modal } from "@nextui-org/react";
 import {
   useDisclosure,
   ModalContent,
   ModalHeader,
-  Input,
-  Textarea,
   ModalBody,
   ModalFooter,
   Link,
@@ -26,7 +25,6 @@ interface props {
 const ProjectCard: React.FC<{ inputProps: props }> = ({ inputProps }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { name, currentFunding, reqFunding, description, github, video, isInvestor } = inputProps;
-  console.log(github);
   return (
     <>
       <Card className="p-8 max-w-md">

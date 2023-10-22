@@ -8,6 +8,7 @@ import {
 } from "@sismo-core/sismo-connect-react";
 import { CONFIG, AUTHS, CLAIMS, SIGNATURE_REQUEST, AuthType } from "./sismo-connect-config";
 import "./home.css";
+import Logo from "./Logo";
 
 export default function Home() {
   const [sismoConnectVerifiedResult, setSismoConnectVerifiedResult] =
@@ -23,16 +24,25 @@ export default function Home() {
           <h1 className="mb-2 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
             Welcome to
           </h1>
+          <div className="flex flex-row">
+          <h1 className="text-5xl mt-2 mb-1 lg:text-8xl">🚀</h1>
           <h1 className="mb-4 text-6xl drop-shadow-xl bg-gradient-to-r from-red-500 via-orange-500 to-orange-200 bg-clip-text text-transparent font-extrabold leading-none tracking-tight md:text-6xl lg:text-9xl">
             DeFund
           </h1>
-          <p className="text-xl mb-8 font-semibold text-orange-100 lg:text-2xl">We invest in <span className="underline underline-offset-2 decoration-2 decoration-blue-400 dark:decoration-blue-600 lg:decoration-4">world's potential</span> :)</p>
+          </div>
+          <p className="text-xl mb-8 font-semibold text-orange-100 lg:text-2xl">
+            We invest in{" "}
+            <span className="underline underline-offset-2 decoration-2 decoration-blue-400 dark:decoration-blue-600 lg:decoration-4">
+              world's potential
+            </span>{" "}
+            :)
+          </p>
           {pageState == "init" ? (
             <>
               <SismoConnectButton
                 overrideStyle={{
-                  background: '#fc711a',
-                  border: 'none',
+                  background: "#fc711a",
+                  border: "none",
                 }}
                 config={CONFIG}
                 auths={AUTHS}

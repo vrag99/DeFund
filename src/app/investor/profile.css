@@ -1,0 +1,6 @@
+body {
+    background: url('../../../public/blob-scene-haikei.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

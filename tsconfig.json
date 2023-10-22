@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/seeker-profile-new/MailIcon.jsx", "src/app/components-new/AnchorIcon.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/seeker-profile-new/MailIcon.jsx", "src/app/components-new/AnchorIcon.tsx", "src/app/investor/SeachIcon.jsx"],
   "exclude": ["node_modules"]
 }

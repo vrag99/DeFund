@@ -12,11 +12,8 @@ import {
   Button,
   useDisclosure,
   Input,
-  Card,
-  CardBody,
-  CardHeader,
-  CircularProgress,
-  Progress,
+  Checkbox,
+  Link,
 } from "@nextui-org/react";
 import { cryptoList } from "./cryptocurrencies.tsx";
 import { Textarea, Select, SelectItem, Divider } from "@nextui-org/react";
@@ -45,7 +42,7 @@ export default function SeekerProfile() {
             <Button onPress={onOpen} variant="ghost" className="font-bold shadow-lg">
               Add New Project
             </Button>
-            <Modal
+            {/* <Modal
               className="text-orange-100 dark"
               isOpen={isOpen}
               onOpenChange={onOpenChange}
@@ -80,7 +77,7 @@ export default function SeekerProfile() {
                   </>
                 )}
               </ModalContent>
-            </Modal>
+            </Modal> */}
             <Divider className="max-w-md mx-auto my-10" />
           </div>
 
@@ -89,15 +86,40 @@ export default function SeekerProfile() {
           </h2>
 
           <div className="flex flex-row space-x-3">
-            <ProjectCard inputProps={{
-              name: "Umbrella Corp",
-              description: "For other uses of the name Umbrella, see Umbrella (disambiguation). For private military company, see Blue Umbrella. The Umbrella Corporation was a multinational conglomerate with subsidiaries active in a variety of industries from the 1980s to the early 2000s. Umbrella had influence in the production and sale of cosmetics, chemicals, pharmaceuticals, industrial machine production, consumer products, health foods, the transportation industry and tourism. Umbrella's large array of subsidiaries was typical for large-scale corporations, though it was purposely built to cover up illegal activities.",
-              currentFunding: 5,
-              reqFunding: 10,
-              github: "https://github.com/",
-              video: "https://youtube.com/",
-              isInvestor: true,
-            }} />
+            <Button onPress={onOpen} color="primary">
+              Add Poll
+            </Button>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center" className="dark">
+              <ModalContent>
+                {(onClose) => (
+                  <>
+                    <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+                    <ModalBody>
+                      <Input
+                        autoFocus
+                        label="Email"
+                        placeholder="Enter your email"
+                        variant="bordered"
+                      />
+                      <div className="flex py-2 px-1 justify-between">
+                        <Checkbox>Remember me</Checkbox>
+                        <Link color="primary" href="#" size="sm">
+                          Forgot password?
+                        </Link>
+                      </div>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button color="danger" variant="flat" onPress={onClose}>
+                        Close
+                      </Button>
+                      <Button color="primary" onPress={onClose}>
+                        Sign in
+                      </Button>
+                    </ModalFooter>
+                  </>
+                )}
+              </ModalContent>
+            </Modal>
           </div>
         </div>
       </div>
