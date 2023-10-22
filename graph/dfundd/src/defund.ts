@@ -1,7 +1,7 @@
 import {
   AddProject as AddProjectEvent,
   FundedProject as FundedProjectEvent
-} from "../generated/DeFund/DeFund"
+} from "../generated/defund/defund"
 import { AddProject, FundedProject } from "../generated/schema"
 
 export function handleAddProject(event: AddProjectEvent): void {
@@ -26,7 +26,6 @@ export function handleFundedProject(event: FundedProjectEvent): void {
   entity.maker = event.params.maker
   entity._project = event.params._project
   entity.amount = event.params.amount
-  entity.erc20ContractAddress = event.params.erc20ContractAddress
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
