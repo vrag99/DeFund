@@ -14,12 +14,9 @@ The project onsists of several paerts:
 
 ## Architecture 
 
-"img here" 
 
 
-
-
-
+![WhatsApp Image 2023-10-22 at 9 13 21 PM](https://github.com/vrag99/DeFund/assets/121158631/0c705bed-0ea5-4adf-b486-4bf26e9b36f0)
 
 
 
