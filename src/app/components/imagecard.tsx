@@ -1,16 +1,21 @@
+"use client"
+
 import { Card, CardHeader, Image, CardFooter } from "@nextui-org/react";
+
 
 interface props {
   heading: string;
   isChoice?: boolean;
   image: string;
   description: string;
+  handlePress:()=>void
 }
 
 export default function ImageCard(props: props) {
+
   return (
     <>
-      <Card isFooterBlurred shadow="md" isPressable className="w-[250px] h-[300px] col-span-12 sm:col-span-7">
+      <Card isFooterBlurred shadow="md" isPressable className="w-[250px] h-[300px] col-span-12 sm:col-span-7" onPress={props.handlePress}>
         <CardHeader className="absolute z-10 flex-col items-start bg-gradient-to-b from-zinc-950 to-black/5">
           <p className="text-lg text-orange-400 uppercase font-bold">{props.heading}</p>
         </CardHeader>
