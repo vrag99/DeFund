@@ -1,36 +1,52 @@
+"use client"
+
+
 import { useEffect, useState } from "react";
 import { SismoConnectButton, SismoConnectResponse, SismoConnectVerifiedResult } from "@sismo-core/sismo-connect-react";
 import { CONFIG, AUTHS, CLAIMS, SIGNATURE_REQUEST, AuthType } from "./sismo-connect-config";
 import "./home.css";
-import { Input } from '@nextui-org/react';
+import { Input, user } from '@nextui-org/react';
 import { Button } from "@nextui-org/react";
+import {store } from './store'
+import { useAppDispatch } from "./hooks/redux";
+import { updateUser } from "./features/userSlice";
+import { userApi } from "./services/user";/* 
+import useStore from "./userStore"; */
 
 export default function Home() {
   const [sismoConnectVerifiedResult, setSismoConnectVerifiedResult] = useState<SismoConnectVerifiedResult>();
   const [pageState, setPageState] = useState<string>("init");
-  const [error, setError] = useState<string>("");
+  const [error1, setError] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const [walletAddress, setWalletAddress] = useState<string | null>(localStorage.getItem('walletAddress'));
+  const [walletAddress, setWalletAddress] = useState<string | null>(window.localStorage.getItem('walletAddress'));
+  const dispatch = useAppDispatch()
+  const [trigger , {data,error,isLoading}] = userApi.endpoints.getUserFromWallet.useLazyQuery()
+  const [loggedIn  , setLoggedIn] = useState<boolean>(false)
+/* 
+  const updateUser = useStore((state)=>state?.updateUser) */
 
+  
   useEffect(() => {
     if (walletAddress) {
-      const getUserFromAddress = async () => {
-        const res = await fetch("http://localhost:8000/check-wallet", {
-          method: 'POST',
-          body: JSON.stringify({ walletAddress })
-        });
-        if (res.ok) {
-          window.location.replace('http://localhost:3000/home');
-          setLoggedIn(true);
+        trigger({walletAddress})
+        if(!isLoading && !error){
+        if(!(data?.isInvestor || data?.isSeeker) && data !== undefined){
+          setLoggedIn(true)
+          window.location.replace('http://localhost:3000/auth')
+        } else if(data?.isInvestor){
+          setLoggedIn(true)
+        } else if (data?.isSeeker){
+          setLoggedIn(true)
         }
-        if (res.status === 403) {
-          setLoggedIn(false);
-        }
-      };
-      getUserFromAddress();
-    }
-  }, [walletAddress]);
+  
+  }}
+  }, [walletAddress , data , isLoading, error,trigger]);
+
+
+  useEffect(()=>{
+    if(data) localStorage.setItem('user' , JSON.stringify(data))
+  } , [data])
+
 
   const handleLogin = async () => {
     const walletAddress = sismoConnectVerifiedResult?.auths?.[0].userId;
@@ -39,13 +55,14 @@ export default function Home() {
         name,
         walletAddress
       };
-      console.log(body);
       const res = await fetch('http://localhost:8000/auth', {
         method: "POST",
         body: JSON.stringify(body),
         headers: { "Content-type": "application/json;charset=UTF-8" }
       });
+      const user = await res.json()
       if (res.ok && walletAddress) {
+        dispatch(updateUser(user))
         window.location.replace("http://localhost:3000/choose");
         localStorage.setItem('walletAddress', walletAddress);
       }
@@ -63,7 +80,7 @@ export default function Home() {
             DeFund
           </h1>
           <p className="text-xl mb-8 font-semibold text-orange-100 lg:text-2xl">We invest in <span className="underline underline-offset-2 decoration-2 decoration-blue-400 dark:decoration-blue-600 lg:decoration-4">world's potential</span> :)</p>
-          {pageState === "init" ? (
+          {pageState === "init" && !loggedIn? (
             <SismoConnectButton
               overrideStyle={{
                 background: '#fc711a',
@@ -98,8 +115,8 @@ export default function Home() {
                 <span className="verifying text-white"> Verifying ZK Proofs... </span>
               ) : (
                 <>
-                  {Boolean(error) ? (
-                    <span className="error"> Error verifying ZK Proofs: {error} </span>
+                  {Boolean(error1) ? (
+                    <span className="error"> Error verifying ZK Proofs: {error1} </span>
                   ) : (
                     <span className="verified text-white"> ZK Proofs verified!</span>
                   )}
